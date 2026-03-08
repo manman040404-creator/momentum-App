@@ -5,7 +5,7 @@ document.body.appendChild(bgImage);
 
 function changeBackground() {
   const chosenImage = images[Math.floor(Math.random() * images.length)];
-  bgImage.src = `img/${chosenImage}`;
+  bgImage.src = `IMG/${chosenImage}`;
 }
 
 changeBackground();
