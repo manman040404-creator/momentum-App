@@ -212,3 +212,26 @@ body img {
   z-index: -1;
   transition: opacity 0.5s ease;
 }
+
+#todo-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#todo-form input {
+  width: 65vw;
+  max-width: 400px;
+}
+
+#todo-form button {
+  border: none;
+  border-radius: 16px;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
+  cursor: pointer;
+}
