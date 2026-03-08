@@ -5,45 +5,39 @@
 body {
   margin: 0;
   height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
-  overflow: hidden;
 }
 
-img {
-  position: absolute;
+/* 배경 이미지 */
+body img {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  top: 0;
-  left: 0;
   z-index: -2;
+  transition: opacity 0.5s ease;
 }
 
+/* 배경 어둡게 */
 body::after {
   content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.35);
   z-index: -1;
 }
 
-#clock {
-  font-size: 80px;
-  margin: 0 0 20px 0;
-}
-
-#login-form,
-#todo-form {
-  margin-bottom: 15px;
-}
-
+/* 기본 입력창 */
 input {
   background: transparent;
   border: none;
@@ -59,82 +53,16 @@ input::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* 로그인 */
+#login-form {
+  margin-bottom: 15px;
+}
+
 #login-form input[type="submit"] {
   display: none;
 }
 
-#todo-form input {
-  width: 400px;
-}
-
-#greeting {
-  font-size: 42px;
-  margin: 0 0 20px 0;
-}
-
-#quote,
-#weather {
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-#weather {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  text-align: right;
-}
-
-#clock {
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-#greeting {
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-#quote {
-  position: absolute;
-  bottom: 30px;
-  text-align: center;
-  font-size: 24px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-#todo-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0 0 0;
-}
-
-#todo-list li {
-  margin-bottom: 10px;
-  font-size: 22px;
-}
-
-#todo-list button {
-  margin-left: 10px;
-  border: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 8px;
-  padding: 4px 10px;
-  cursor: pointer;
-}
-
-#clock {
-  font-size: 110px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-shadow: 0px 5px 15px rgba(0,0,0,0.5);
-}
-
-#greeting {
-  font-size: 48px;
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-
+/* 날짜 / 시계 / 인사말 */
 #date {
   margin: 0 0 10px 0;
   font-size: 28px;
@@ -143,12 +71,46 @@ input::placeholder {
 }
 
 #clock {
+  margin: 0 0 10px 0;
   font-size: 110px;
   font-weight: 700;
-  margin-bottom: 10px;
   text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
+#greeting {
+  margin: 0 0 30px 0;
+  font-size: 48px;
+  font-weight: 600;
+  text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* Todo form */
+#todo-form {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#todo-form input {
+  width: 65vw;
+  max-width: 400px;
+}
+
+#todo-form button {
+  border: none;
+  border-radius: 16px;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
+  cursor: pointer;
+}
+
+/* Todo list */
 #todo-list {
   list-style: none;
   padding: 0;
@@ -163,12 +125,43 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 #todo-list li span {
   flex: 1;
 }
 
+#todo-list button {
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+/* 명언 */
+#quote {
+  position: absolute;
+  bottom: 30px;
+  text-align: center;
+  font-size: 24px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 날씨 */
+#weather {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+  font-size: 24px;
+  margin-top: 10px;
+  text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* 상단 버튼 */
 #top-bar {
   position: absolute;
   top: 20px;
@@ -193,45 +186,79 @@ input::placeholder {
   background-color: rgba(255, 255, 255, 0.22);
 }
 
-#weather {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  text-align: right;
-  font-size: 24px;
-  text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
-}
+/* 모바일 */
+@media screen and (max-width: 768px) {
+  #top-bar {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 
-body img {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  transition: opacity 0.5s ease;
-}
+  #top-bar button {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
 
-#todo-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
+  #weather {
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+  }
 
-#todo-form input {
-  width: 65vw;
-  max-width: 400px;
-}
+  #date {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
 
-#todo-form button {
-  border: none;
-  border-radius: 16px;
-  padding: 10px 14px;
-  font-size: 16px;
-  font-weight: 600;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #222;
-  cursor: pointer;
+  #clock {
+    font-size: 64px;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  #greeting {
+    font-size: 28px;
+    padding: 0 20px;
+  }
+
+  #login-form input,
+  #todo-form input {
+    width: 80vw;
+    font-size: 20px;
+  }
+
+  #todo-form {
+    width: 90vw;
+    gap: 8px;
+  }
+
+  #todo-form input {
+    width: 65vw;
+    max-width: none;
+    font-size: 18px;
+    padding: 10px 8px;
+  }
+
+  #todo-form button {
+    display: inline-block;
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  #todo-list {
+    width: 80vw;
+    max-height: 180px;
+  }
+
+  #todo-list li {
+    font-size: 18px;
+  }
+
+  #quote {
+    bottom: 20px;
+    font-size: 18px;
+    padding: 0 20px;
+  }
 }
